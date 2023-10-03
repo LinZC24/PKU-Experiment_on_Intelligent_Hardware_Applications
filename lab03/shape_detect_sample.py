@@ -1,6 +1,6 @@
 import cv2 as cv
 import numpy as np
-img = cv.imread('lab03/wx20231002002220.jpg', 0)
+img = cv.imread('code\lab03\watch.jpg', 0)
 img = cv.medianBlur(img, 5)
 cimg = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
 circles = cv.HoughCircles(img, cv.HOUGH_GRADIENT, 1, 20, param1=50, param2=30, minRadius=0, maxRadius=0)

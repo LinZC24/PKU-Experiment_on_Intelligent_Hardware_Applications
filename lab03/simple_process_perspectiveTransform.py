@@ -1,6 +1,6 @@
 import cv2 as cv
 import numpy as np
-img = cv.imread('lab03\wx20231002002220.jpg', 1)
+img = cv.imread('code\lab03\watch.jpg', 1)
 size = img.shape
 ogp = [[0, 0], [size[0] - 1, 0], [0, size[1] - 1], [size[0] - 1, size[1] - 1]]
 

@@ -1,5 +1,5 @@
 import cv2 as cv
-img = cv.imread('lab03\wx20231002002220.jpg', 1)
+img = cv.imread('code\lab03\watch.jpg', 1)
 cv.imshow('card', img)
 cv.waitKey(0)
 cv.destroyWindow('card')
