@@ -1,11 +1,11 @@
 import cv2 as cv
 import numpy as np
 
-img = cv.imread('code\lab03\watch.jpg', 0)
+img = cv.imread('watch.jpg', 0)
 img = cv.medianBlur(img, 5)
 cimg = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
 
-circles = cv.HoughCircles(img, cv.HOUGH_GRADIENT, 1, 50, param1=50, param2=30, minRadius= 30, maxRadius=50)
+circles = cv.HoughCircles(img, cv.HOUGH_GRADIENT, 1, 50, param1=50, param2=40, minRadius= 30, maxRadius=50)
 
 circles = np.uint16(np.around(circles))
 for i in circles[0, :]:
