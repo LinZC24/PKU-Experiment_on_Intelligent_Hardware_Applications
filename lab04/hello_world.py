@@ -12,7 +12,7 @@ img = Image.new('RGB', (78, 39), 'black')
 font = ImageFont.load_default()
 draw = ImageDraw.Draw(img)
 
-draw.text((0, 10), 'hello world!', font = font, fill = 255, align = 'center')
+draw.text((0, 10), 'hello world!', font = font, fill = 255, align = 'center') # 利用图片显示字符串
 img = img.resize((128, 64))
 img1 = img.convert('1')
 

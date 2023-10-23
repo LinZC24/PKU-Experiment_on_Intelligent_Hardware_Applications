@@ -3,6 +3,7 @@ import spidev as SPI
 import SSD1306
 from PIL import Image
 
+# 设置树莓派管脚信息
 RST = 19
 DC = 16
 bus = 0
@@ -11,7 +12,7 @@ disp = SSD1306.SSD1306(rst=RST,dc=DC,spi=SPI.SpiDev(bus,device))
 
 disp.begin()
 disp.clear()
-disp.display() # 初 始 化 屏 幕 相 关 参 数 及 清 屏
+disp.display() # 初始化屏幕相关参数及清屏
 
 image = Image.open('pku.png').resize((disp.width , disp.height),Image.ANTIALIAS).convert('1')
 disp.image(image)

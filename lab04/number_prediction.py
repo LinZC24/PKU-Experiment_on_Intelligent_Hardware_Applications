@@ -22,7 +22,7 @@ n_samples = len(digits.images)
 data = digits.images.reshape((n_samples , -1))
 
 # 建 立 分 类 器
-classifier = svm.SVC(kernel = 'rbf', gamma=0.001)
+classifier = svm.SVC(kernel = 'linear', gamma='auto')
 
 # 用 前 一 半 数 据 进 行 训 练
 classifier.fit(data[:n_samples // 2], digits.target[:n_samples // 2])

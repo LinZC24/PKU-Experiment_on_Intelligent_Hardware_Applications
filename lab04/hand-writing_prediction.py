@@ -6,6 +6,7 @@ from picamera2 import Picamera2, Preview
 import time
 from PIL import Image, ImageFont, ImageDraw
 
+# 初始化摄像头
 cam = Picamera2()
 cam_config = cam.create_preview_configuration()
 cam.configure(cam_config)
@@ -34,14 +35,14 @@ expected = digits.target[:n_samples]
 original = Image.open('original.jpg')
 
 img = original.convert('L').resize((8, 8))
-image_array = 16 - np.array(img) // 16
-imgToClassify = image_array.reshape(1, -1)
+image_array = 16 - np.array(img) // 16 # 转化为16度灰度
+imgToClassify = image_array.reshape(1, -1)# 转化为一维数据
 print(imgToClassify)
 
 # 预 测
 predicted = classifier.predict(imgToClassify)
 
-#output
+# 输出预测结果
 plt.axis('off')
 plt.imshow(img, cmap = plt.cm.gray_r, interpolation = 'nearest')
 plt.title('prediction: %i' % predicted)
