@@ -3,7 +3,7 @@ import numpy as np
 i = 0
 original_points = np.float32([[0, 0], [640, 0], [0, 480], [640, 480]])
 target_points = np.float32([[0, 0], [640, 0], [0, 480], [640, 480]])
-img = cv.imread('pods,jpg')
+img = cv.imread('card.png')
 cv.imshow('img', img)
 def mouse(event, x, y, flags, param):
     global i
