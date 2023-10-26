@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-im = cv.imread('code\lab03\pods.jpg')
+im = cv.imread('lab03/pods.jpg')
 imgray = cv.cvtColor(im, cv.COLOR_BGR2GRAY)
 ret, thresh = cv.threshold(imgray, 127, 255, cv.THRESH_BINARY)
 contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)

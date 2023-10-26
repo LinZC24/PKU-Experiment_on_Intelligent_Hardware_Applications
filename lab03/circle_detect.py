@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-img = cv.imread('code\lab03\watch.jpg', 0)
+img = cv.imread('lab03/watch.jpg', 0)
 img = cv.medianBlur(img, 5)
 cimg = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
 
