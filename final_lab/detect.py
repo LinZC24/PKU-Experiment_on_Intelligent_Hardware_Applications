@@ -15,7 +15,6 @@ class vision:
     def detect_edge(self, img):
         image = cv.medianBlur(img, 5)
         imgray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-        #ret, thresh = cv.adaptiveThreshold((imgray, 10, 255, cv.THRESH_BINARY)
         thresh = cv.adaptiveThreshold(imgray, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 5, 2)
         cv.imshow('t', thresh)
         contours, hierarchy = cv.findContours(thresh, cv.RETR_CCOMP, cv.CHAIN_APPROX_NONE)
@@ -45,15 +44,11 @@ class vision:
         hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
         mask = cv.inRange(hsv, low, high)
         mask = cv.medianBlur(mask, 5)
-        #mask = cv.cvtColor(mask, cv.COLOR_HSV2BGR)
         return mask
        
     def put_text(self, img, mask, color):
-        #canny = cv.Canny(r, 100, 200)
-        #temp = [0]
         r = []
         contours, hierarchy = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
-    #     x, y, w, h = cv.boundingRect(contours)
         for i in contours:
             area = cv.contourArea(i)
             cv.drawContours(img, i, -1, (255, 0, 0), 2)
@@ -75,14 +70,3 @@ class vision:
         g_result=self.put_text(img, r_green, "green")
         y_result=self.put_text(img, r_yellow, "yellow")
         return r_result, b_result, g_result, y_result
-#     while True:
-#         img = cam.capture_array("main")
-#         detect_edge(img)
-#         detect_color(img)
-#         cv.imshow("result", img)
-#         
-#         if cv.waitKey(1) == ord("q"):
-#             break
-    
-# cv.destroyAllWindows()
-# cam.release()

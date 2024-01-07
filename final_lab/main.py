@@ -60,23 +60,7 @@ while True:
     zc=gnd+z0
     h=gnd+z0
     break
-    #print("invalid position, try again!")
 
-# img = cam.capture_array("main")
-# v.detect_color(img)
-# cv.imshow("result", img)
-# cv.waitKey(0)
-# 
-# def show():
-#     img = cam.capture_array("main")
-#     [r,g,b,y]=v.detect_color(img)
-#     print(r,g,b,y)
-#     cv.imshow("result", img)
-#     cv.waitKey(4)
-# def action():
-#     input("select a color:\n")
-#     return
-#
 def move():
     d.move_to(xc, yc, h, ir,wait=True)
     d.suck(True)
@@ -103,9 +87,6 @@ def mouse(event, x, y, flags, param):
             perspective_matrix = cv.getPerspectiveTransform(original_points, target_points)
             global output
             output = cv.warpPerspective(img, perspective_matrix, (640,480))
-            #v.detect_color(output)
-            #cv.imshow('Output', output)
-            #cv.waitKey(0)
             return
         print(x, y)
         original_points[i] = [x, y]
@@ -123,45 +104,15 @@ while True:
 while True:
     img = cam.capture_array("main")
     output=img
-    #v.detect_color(img)
     cv.imshow("result", img)
     cv.setMouseCallback('result', mouse)
     cv.waitKey(0)
     cv.destroyWindow('result')
-#     (x0, y0) = v.detect_edge(img)
-#     print(f'x:{x0}, y:{y0}')
-#     while True:
-#         [r,g,b,y]=v.detect_color(img)
-#         print(r,g,b,y)
-#         cv.imshow("result", img)
-#         cv.waitKey(5)
-#     if cv.waitKey(1) == ord("c"):
-#         continue 
-    #while True:
-#     act = input("input an action")
-#     if act == "move":
-#         (x0, y0, z0, r0, j1, j2, j3, j4) = d.pose()
-#         x = input("input x position\n")
-#         y = input("input y position\n")
-#         z = input("input z position\n")
-#         r = input("input r position\n")
-#         x = float(x)
-#         y = float(y)
-#         z = float(z)
-#         r = float(r)
-#         d.move_to(x, y, z, r=r0, wait = True)
-#         (x1, y1, z1, r1, j1, j2, j3, j4) = d.pose()
-#         print(f'x:{x1}, y:{y1}, z:{z1}, r:{r1}')
-#     else:
-#         break
-    #while True:
     [r,b,g,y]=v.detect_color(output)
     print(r,g,b,y)
     cv.imshow("preview",output)
-#         cv.destroyWindow('preview')
     cv.waitKey(0)
     cv.destroyWindow('preview')
-        #print(r)
     color = input("select a color\n")
     if color == "red" and len(r) != 0:
         print("you selected red\n")
@@ -190,16 +141,12 @@ while True:
         m=True
     else:
         print("invalid color!\n")
-#        xc=int(input("input xc"))
-#         yc=int(input("input yc"))
         
     if m:
         xc, yc = trans(xc, yc)
         move()
         zc=zc+z0
-#         if cv.waitKey(1) == ord("q"):
-#             break
-# 
+
 cv.destroyAllWindows()
 d.close()
 cam.stop()
